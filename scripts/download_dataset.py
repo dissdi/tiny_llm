@@ -16,4 +16,4 @@ dataset_dict = DatasetDict({
     "test": test_data,
 })
 
-dataset_dict.save_to_disk("datasets/wikitext-2-raw-v1")
+dataset_dict.save_to_disk("datasets/raw/wikitext-2-raw-v1")

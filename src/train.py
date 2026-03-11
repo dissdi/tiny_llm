@@ -24,3 +24,4 @@ model = AutoModelForCausalLM.from_pretrained(model_name)
 
 # Load dataset
 dataset = load_from_disk("datasets/wikitext-2-raw-v1")
+
