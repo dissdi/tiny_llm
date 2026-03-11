@@ -23,7 +23,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(model_name)
 
 # Load dataset
-dataset = load_from_disk("datasets/wikitext-2-raw-v1")
+dataset = load_from_disk("datasets/raw/wikitext-2-raw-v1")
 
 # Tokenize dataset
 def tokenize_fn(batch):
