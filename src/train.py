@@ -25,3 +25,15 @@ model = AutoModelForCausalLM.from_pretrained(model_name)
 # Load dataset
 dataset = load_from_disk("datasets/wikitext-2-raw-v1")
 
+# Tokenize dataset
+def tokenize_fn(batch):
+    return tokenizer(batch["text"])
+
+tokenized_dataset = dataset.map(tokenize_fn,
+                                batched=True,
+                                batch_size=1000,
+                                remove_columns=["text"],
+                                )
+
+# Save tokenized data
+tokenized_dataset.save_to_disk("datasets/tokenized/wikitext-2-raw-v1_tokenized")
