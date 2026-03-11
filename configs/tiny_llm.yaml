@@ -1,0 +1,48 @@
+project:
+  name: tiny_llm
+  seed: 42
+
+paths:
+  data_root: /data2/dissdi/tiny_llm/datasets
+  output_root: /data2/dissdi/tiny_llm/outputs
+  cache_root: /data2/dissdi/tiny_llm/.cache
+  checkpoint_dir: /data2/dissdi/tiny_llm/outputs/checkpoints
+  log_dir: /data2/dissdi/tiny_llm/outputs/logs
+
+dataset:
+  name: wikitext
+  subset: wikitext-2-raw-v1
+  text_column: text
+
+tokenizer:
+  name: gpt2
+  use_fast: true
+
+model:
+  model_type: gpt2
+  vocab_size: 50257
+  n_positions: 128
+  n_embd: 256
+  n_layer: 4
+  n_head: 4
+
+train:
+  block_size: 128
+  per_device_train_batch_size: 8
+  per_device_eval_batch_size: 8
+  learning_rate: 0.0005
+  weight_decay: 0.01
+  num_train_epochs: 1
+  warmup_steps: 50
+  logging_steps: 20
+  eval_steps: 100
+  save_steps: 100
+  save_total_limit: 2
+  max_steps: 300
+
+generate:
+  max_new_tokens: 50
+  temperature: 0.9
+  top_k: 50
+  top_p: 0.95
+  do_sample: true

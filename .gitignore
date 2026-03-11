@@ -1,0 +1,61 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# =========================
+# Editor / OS
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Training outputs / checkpoints
+# =========================
+outputs/
+checkpoints/
+runs/
+wandb/
+mlruns/
+
+# =========================
+# Data
+# =========================
+data/raw/
+data/processed/
+data/cache/
+*.arrow
+*.parquet
+*.bin
+
+# =========================
+# Hugging Face / model cache
+# =========================
+.cache/
+.huggingface/
+hf_cache/
+
+# =========================
+# Secrets / local config
+# =========================
+.env
+.env.*
+*.secret
+*.key
