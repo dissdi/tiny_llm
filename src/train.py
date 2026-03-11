@@ -1,5 +1,7 @@
 import yaml
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from datasets import load_from_disk
+
 
 # Load config
 def load_config(config_file_path):
@@ -20,3 +22,5 @@ model_name = "distilgpt2"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(model_name)
 
+# Load dataset
+dataset = load_from_disk("datasets/wikitext-2-raw-v1")
