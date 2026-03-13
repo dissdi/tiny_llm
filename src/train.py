@@ -37,3 +37,27 @@ tokenized_dataset = dataset.map(tokenize_fn,
 
 # Save tokenized data
 tokenized_dataset.save_to_disk("datasets/tokenized/wikitext-2-raw-v1_tokenized")
+
+# Load tokenized data
+dataset = load_from_disk("datasets/tokenized/wikitext-2-raw-v1_tokenized")
+
+# Block-wise chunking of tokenized sequences for training
+def group_texts(dataset, block_size):
+    dataset = {
+        k: sum(dataset[k], [])
+        for k in dataset.keys()
+    }
+    
+    total_length = len(dataset["input_ids"])
+    total_length = (total_length // block_size) * block_size
+    
+    result = {
+        k: [
+            t[i : i + block_size]
+            for i in range(0, total_length, block_size)
+        ]
+        for k, t in dataset.items()
+    }
+    result["labels"] = result["input_ids"].copy()
+    return result
+
