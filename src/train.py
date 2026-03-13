@@ -13,7 +13,7 @@ def load_config(config_file_path):
             print(f"Error reading yaml file")
             return None
 
-config_data = load_config('configs/tiny_llm.yaml')
+config = load_config('configs/tiny_llm.yaml')
 
 # Model name
 model_name = "distilgpt2"
@@ -60,4 +60,13 @@ def group_texts(dataset, block_size):
     }
     result["labels"] = result["input_ids"].copy()
     return result
+
+block_size = config["train"]["block_size"]
+
+block_dataset = dataset.map(
+    lambda x: group_texts(x, block_size),
+    batched=True,
+)
+
+block_dataset.save_to_disk("datasets/block_wise/wikitext-2-raw-v1_block_wise")
 
