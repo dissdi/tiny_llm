@@ -101,7 +101,6 @@ block_dataset.save_to_disk(f"datasets/block_wise/wikitext-2-raw-v1_block_size_{b
 # Training arguments, Trainer
 training_args = TrainingArguments(
     output_dir=config["paths"]["output_root"],
-    overwrite_output_dir=True,
 
     per_device_train_batch_size=config["train"]["per_device_train_batch_size"],
     per_device_eval_batch_size=config["train"]["per_device_eval_batch_size"],

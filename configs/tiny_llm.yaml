@@ -3,11 +3,11 @@ project:
   seed: 42
 
 paths:
-  data_root: /data2/dissdi/tiny_llm/datasets
-  output_root: /data2/dissdi/tiny_llm/outputs
-  cache_root: /data2/dissdi/tiny_llm/.cache
-  checkpoint_dir: /data2/dissdi/tiny_llm/outputs/checkpoints
-  log_dir: /data2/dissdi/tiny_llm/outputs/logs
+  data_root: /data2/donginson/projects/tiny_llm/datasets
+  output_root: /data2/donginson/projects/tiny_llm/outputs
+  cache_root: /data2/donginson/projects/tiny_llm/.cache
+  checkpoint_dir: /data2/donginson/projects/tiny_llm/outputs/checkpoints
+  log_dir: /data2/donginson/projects/tiny_llm/outputs/logs
 
 dataset:
   name: wikitext
@@ -25,6 +25,7 @@ model:
   n_embd: 256
   n_layer: 4
   n_head: 4
+  checkpoint_dir: /data2/donginson/projects/tiny_llm/outputs/checkpoints
 
 train:
   block_size: 128
@@ -40,9 +41,10 @@ train:
   save_total_limit: 2
   max_steps: 300
 
-generate:
+generation:
+  prompt: "Once upon a time"
   max_new_tokens: 50
-  temperature: 0.9
+  do_sample: true
+  temperature: 0.8
   top_k: 50
   top_p: 0.95
-  do_sample: true
