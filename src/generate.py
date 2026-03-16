@@ -42,6 +42,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 tokenizer = AutoTokenizer.from_pretrained(checkpoint_dir)
 model = AutoModelForCausalLM.from_pretrained(checkpoint_dir)
 
+model.to(device)
 model.eval()
 
 # Tokenize
